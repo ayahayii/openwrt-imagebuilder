@@ -1,7 +1,7 @@
 FROM alpine:3.15
 
 RUN echo "**** install dependencies ****" && \
-    apk add  --no-cache \
+    apk add --no-cache \
       argp-standalone \
       asciidoc \
       bash \
@@ -47,4 +47,4 @@ ENV FILES=
 ENV FILES_REMOVE=
 
 WORKDIR /imagebuilder
-CMD make image PROFILE="$PROFILE" PACKAGES="$PACKAGES" FILES="$FILES" FILES_REMOVE="$FILES_REMOVE"
+CMD export SOURCE_DATE_EPOCH=1 && make image PROFILE="$PROFILE" PACKAGES="$PACKAGES" FILES="$FILES" FILES_REMOVE="$FILES_REMOVE"
